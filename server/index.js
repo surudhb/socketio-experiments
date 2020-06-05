@@ -29,9 +29,9 @@ io.on("connection", (client) => {
   });
 
   client.on(`sendMessage`, (msg, ack) => {
-    const res = getUser(socket.id);
+    const res = Users.getUser(client.id);
     if (res.status === `SUCCESS`) {
-      const user = data;
+      const user = res.body;
       io.to(user.room).emit(`message`, { user: user.name, txt: msg });
     }
     ack(res);

@@ -20,7 +20,7 @@ const removeUser = (id) => {
   const deletedUser = users.find((user) => user.id === id);
   users.filter((user) => user.id !== id);
   if (deletedUser) {
-    return { status: `SUCCESS`, body: `Deleted user: ${deletedUser.id}` };
+    return { status: `SUCCESS`, body: deletedUser };
   } else {
     return { status: `ERROR`, body: `User ${id} not found.` };
   }
